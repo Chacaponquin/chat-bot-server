@@ -4,7 +4,7 @@ from fastapi import APIRouter
 from modules.chat.dto.messageDTO import MessageDTO
 
 # services
-from modules.neuronalNetwork.services.nnServices import getResponseFromMessage
+from modules.neuronalNetwork.services.nnServices import getResponseFromMessage, trainModel
 
 chatRoutes = APIRouter(prefix='/chat')
 
@@ -12,4 +12,5 @@ chatRoutes = APIRouter(prefix='/chat')
 @chatRoutes.post('/newMessage')
 def chatWithBot(message: MessageDTO):
     msg = dict(message)
-    return getResponseFromMessage(msg['message'])
+    resultMessage = getResponseFromMessage(msg['message'])
+    return resultMessage
