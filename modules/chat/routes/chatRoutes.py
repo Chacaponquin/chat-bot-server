@@ -14,3 +14,9 @@ def chatWithBot(message: MessageDTO):
     msg = dict(message)
     resultMessage = getResponseFromMessage(msg['message'])
     return resultMessage
+
+
+@chatRoutes.get('/train')
+def trainBot():
+    trainModel()
+    return

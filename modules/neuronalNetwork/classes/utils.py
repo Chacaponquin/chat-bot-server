@@ -11,11 +11,11 @@ def tokenizeList(words: list[str]) -> list[str]:
 
 
 def tokenizeAndLower(sentence: str) -> list[str]:
-    return [word.lower() for word in nltk.word_tokenize(sentence)]
+    return [word.lower() for word in nltk.word_tokenize(sentence, language='spanish')]
 
 
 def stem(words: list[str]):
-    return [stemmer.stem(word) for word in words]
+    return [stemmer.stem(word, True) for word in words]
 
 
 def bag_of_words(array_tokenized_words: list[str], all_words: list[str]):

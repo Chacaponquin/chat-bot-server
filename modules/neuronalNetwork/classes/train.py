@@ -6,9 +6,11 @@ import torch
 from torch.utils.data import Dataset, DataLoader
 import torch.nn as nn
 
+from modules.neuronalNetwork.constants.constants import IGNORE_CHARACTERS
+
 from model import NeuronalNet
 
-with open('../../../data/intents.json', 'r') as f:
+with open('data/intents.json', 'r') as f:
     data = json.load(f)
 
 # Caracteres especiales a ignorar
@@ -36,6 +38,7 @@ for data_train in data:
 
 
 # remove ignored characters
+allwords = [word for word in allwords if word not in IGNORE_CHARACTERS]
 # remove duplicates and sort
 all_words = sorted(set(allwords))
 tags = sorted(set(tags))
@@ -107,7 +110,7 @@ data = {
     "tags": tags
 }
 
-FILE = "data.pth"
+
 torch.save(data, FILE)
 
 print(f'training complete. file saved to {FILE}')

@@ -69,7 +69,7 @@ def getResponseFromMessage(inputMessage: str) -> str:
             if response_tag == intent["tag"]:
                 return f"{random.choice(intent['responses'])}"
     else:
-        return f"I do not understand..."
+        return f"Disculpa no entiendo"
 
 
 def trainModel():
